@@ -1,0 +1,55 @@
+<div class="bootstarp-wrapper">
+    <div class="container mt">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center mtt">
+                  <div *ngIf="msg" class="alert alert-danger" role="alert">
+                    {{msg}}
+                  </div>
+                    <form (ngSubmit)="onSubmit()">
+                        <br>
+                        <mat-form-field class="full-width">
+                            <mat-label>Email</mat-label>
+                            <input required [(ngModel)]="email" placeholder="Enter Email" type="text"
+                                name="username" matInput />
+                        </mat-form-field>
+                        <div style="padding-top: 2%;" class="container text-center">
+                            <button type="submit" mat-raised-button color="primary">Submit</button>
+                            <button type="reset" style="margin-left: 10px;" mat-raised-button
+                                color="warn">Reset</button>
+                        </div>
+                    </form>
+                    <br>
+                    <div *ngIf="reservations">
+                    <span style="color:blue">Ticket Details</span><br>
+                    <div *ngIf="cancel" class="alert alert-danger" role="alert">
+                      {{cancel}}
+                    </div>
+                    <div style="margin: 2%;">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <td scope="col">PNR Number</td>
+                              <td scope="col">Airline</td>
+                              <td scope="col">Departure City</td>
+                              <td scope="col">Arrival City</td>
+                              <td scope="col">Price</td>
+                              <td scope="col">Action</td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let u of reservations; index as i">
+                              <td>{{u.pnr}}</td>
+                              <td>{{u.flight.airlineName}}</td>
+                              <td>{{u.flight.departureCity}}</td>
+                              <td>{{u.flight.arrivalCity}}</td>
+                              <td>{{u.flight.price | currency:"INR"}}</td>
+                              <td><button (click)="deleteRow(u,i)"style="font-size: 13px;" mat-raised-button color="accent">Cancel</button></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

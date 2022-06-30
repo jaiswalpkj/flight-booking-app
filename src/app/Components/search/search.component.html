@@ -1,0 +1,58 @@
+<div class="bootstarp-wrapper">
+    <div class="container mt">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <img class="img-fluid" style="width: 120px;" src="/assets/airplane.png">
+                </div>
+                <h1 class="text-center">Flight Search</h1>
+                <br>
+                <!-- creating form -->
+                <form (ngSubmit)="onSubmit()">
+                    <mat-form-field class="full-width">
+                        <mat-label>From</mat-label>
+                        <input required [(ngModel)]="search.from" type="text" name="from" matInput />
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>To</mat-label>
+                        <input required [(ngModel)]="search.to" type="text" name="to" matInput />
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Date</mat-label>
+                        <input required [(ngModel)]="search.date" type="date" name="date" matInput />
+                    </mat-form-field>
+                    <div class="container text-center">
+                        <button type="submit" mat-raised-button color="primary">Submit</button>
+                        <button type="reset" style="margin-left: 10px;" mat-raised-button color="warn">Reset</button>                   
+                    </div>
+                </form>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="msg" class="alert alert-danger text-center" role="alert">
+        {{msg}}
+      </div>
+    <div *ngIf="flights" style="margin: 2%;">
+      <table class="table">
+        <tbody>
+            <tr>
+              <td>Airlines</td>
+              <td>Departure City</td>
+              <td>Arrival City</td>
+              <td>Price</td>
+              <td>Action</td>
+            </tr>
+        <tbody>
+          <tr *ngFor="let u of flights; index as i">
+            <td>{{u.airlineName}}</td>
+            <td>{{u.departureCity}}</td>
+            <td>{{u.arrivalCity}}</td>
+            <td>{{u.price | currency:"INR"}}</td>
+            <td>
+               <button routerLink="/book/{{u.id}}" mat-raised-button color="accent">Book</button>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>

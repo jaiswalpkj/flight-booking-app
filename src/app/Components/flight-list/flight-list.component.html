@@ -1,0 +1,48 @@
+<div class="bootstarp-wrapper">
+    <div class="text-center mtt">
+        <span style="color:blue;font-size: 30px;">Flights</span><br><br>
+
+        <div *ngIf="enb" class="alert alert-success" role="alert">
+            {{enb}}
+        </div>
+
+        <div *ngIf="dis" class="alert alert-success" role="alert">
+            {{dis}}
+        </div>
+
+        <div style="margin: 2%;">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td scope="col">Flight Number</td>
+                        <td scope="col">Airline Name</td>
+                        <td scope="col">Departure City</td>
+                        <td scope="col">Arrival City</td>
+                        <td scope="col">Date Of Departure</td>
+                        <!-- <td scope="col">Bussiness Seat</td>
+                        <td scope="col">Enomic Seat</td> -->
+                        <td scope="col">Price</td>
+                        <td scope="col">Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let u of flights; index as i">
+                        <td>{{u.flightNumber}}</td>
+                        <td>{{u.airlineName}}</td>
+                        <td>{{u.departureCity}}</td>
+                        <td>{{u.arrivalCity}}</td>
+                        <td>{{u.dateOfDeparture}}</td>
+                        <!-- <td>{{u.bussinessSeat}}</td>
+                        <td>{{u.nonBussinessSeat}}</td> -->
+                        <td>{{u.price | currency:"INR"}}</td>
+                        <td>
+                            <button  mat-raised-button color="primary" routerLink="/updateFlight/{{u.id}}" >Update</button>&nbsp;
+                            <button mat-raised-button color="warn" (click)="deleteRow(u,i)">Delete</button>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="bootstarp-wrapper">
+    <div class="container mt">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center mtt">
+                    <div class="container text-center mtt">
+                        <div *ngIf="msg" class="alert alert-danger" role="alert">
+                          {{msg}}
+                        </div>
+                    <form (ngSubmit)="onSubmit()">
+                        <br>
+                        <mat-form-field class="full-width">
+                            <mat-label>PNR Number</mat-label>
+                            <input required [(ngModel)]="pnr.pnr"  placeholder="Enter PNR Number" type="text" name="username" matInput />
+                        </mat-form-field>
+                        <div style="padding-top: 2%;" class="container text-center">
+                            <button type="submit" mat-raised-button color="primary">Submit</button>
+                            <button type="reset" style="margin-left: 10px;" mat-raised-button color="warn">Reset</button>                   
+                        </div>
+                    </form>
+                    <br>
+                    <div *ngIf="reservation">
+                    <span style="color:blue">Ticket Details</span><br><br>
+                      <table class="table">
+                        <tr class="border">
+                            <td>PNR Number</td>
+                            <td>{{reservation.pnr}}</td>
+                        </tr>
+                        <tr class="border">
+                            <td>Email</td>
+                            <td>{{reservation.email}}</td>
+                        </tr>
+                        <tr class="border">
+                            <td>Airline</td>
+                            <td>{{reservation.flight.airlineName}}</td>
+                        </tr>
+                        <tr class="border">
+                            <td>Departure City</td>
+                            <td>{{reservation.flight.departureCity}}</td>
+                        </tr>
+                        <tr class="border">
+                            <td>Arrival City</td>
+                            <td>{{reservation.flight.arrivalCity}}</td>
+                        </tr>
+                        <tr class="border">
+                            <td>Passanger Name</td>
+                            <td>{{reservation.passenger.name}}</td>
+                        </tr>
+                        <tr class="border">
+                            <td>Passanger Age</td>
+                            <td>{{reservation.passenger.age}}</td>
+                        </tr>
+                        <tr class="border">
+                            <td>Passanger Gender</td>
+                            <td>{{reservation.passenger.gender}}</td>
+                        </tr>
+                        <tr class="border">
+                            <td>Price </td>
+                            <td>{{reservation.flight.price | currency:"INR"}}</td>
+                        </tr>
+                    </table>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

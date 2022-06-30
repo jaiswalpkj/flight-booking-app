@@ -1,0 +1,46 @@
+<div class="bootstarp-wrapper">
+    <div class="container mt">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <span style="color:blue;font-size: 20px;">Add Airline Details</span><br><br>
+
+                    <div *ngIf="err" class="alert alert-danger" role="alert">
+                        {{err}}
+                    </div>
+
+                    <div *ngIf="msg" class="alert alert-success" role="alert">
+                        {{msg}}
+                    </div>
+
+                    <!-- creating form -->
+
+                    <form (ngSubmit)="onSubmit()">
+                        <mat-form-field class="full-width">
+                            <mat-label>Airline Name</mat-label>
+                            <input required type="text" [(ngModel)]="airline.airlineName"
+                                placeholder="Enter Airline Name" name="name" matInput />
+                        </mat-form-field>
+                        <mat-form-field class="full-width">
+                            <mat-label>Phone</mat-label>
+                            <input required type="text" [(ngModel)]="airline.phone" placeholder="Enter Phone"
+                                name="phone" matInput />
+                        </mat-form-field>
+                        <mat-form-field class="full-width">
+                            <mat-label>Address</mat-label>
+                            <input required type="text" [(ngModel)]="airline.address" placeholder="Enter Address"
+                                name="address" matInput />
+                        </mat-form-field>
+                        <div style="margin-bottom: 2%;" class="container text-center">
+                            <button type="submit" mat-raised-button color="primary">Submit</button>
+                            <button type="reset" style="margin-left: 10px;" mat-raised-button
+                                color="warn">Reset</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

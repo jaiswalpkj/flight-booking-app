@@ -1,0 +1,74 @@
+<div class="bootstarp-wrapper">
+    <div class="container mtt">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <span style="color:blue;font-size: 20px;">Update Flight Details</span><br><br>
+
+                    <div *ngIf="err" class="alert alert-danger" role="alert">
+                        {{err}}
+                    </div>
+
+                    <div *ngIf="msg" class="alert alert-success" role="alert">
+                        {{msg}}
+                    </div>
+                </div>
+                    <!-- creating form -->
+
+                    <form (ngSubmit)="onSubmit()">
+                        <mat-form-field class="full-width">
+                            <mat-label>Flight Number</mat-label>
+                            <input required type="text" [(ngModel)]="flight.flightNumber"
+                                placeholder="Enter Flight Number" name="number" matInput />
+                        </mat-form-field>
+                        <mat-form-field class="full-width">
+                            <mat-label>Airline Name</mat-label>
+                            <input required type="text" [(ngModel)]="flight.airlineName"
+                                placeholder="Enter Airline Name" name="name" matInput />
+                        </mat-form-field>
+                        <mat-form-field class="full-width">
+                            <mat-label>Departure City</mat-label>
+                            <input required type="text" [(ngModel)]="flight.departureCity" placeholder="Enter Departure City"
+                                name="departureCity" matInput />
+                        </mat-form-field>
+                        <mat-form-field class="full-width">
+                            <mat-label>Arrival City</mat-label>
+                            <input required type="text" [(ngModel)]="flight.arrivalCity" placeholder="Enter Arrival City"
+                                name="arrivalCity" matInput />
+                        </mat-form-field>
+                        <mat-label>Meal</mat-label><br>
+                      <mat-radio-group class="full-width" aria-label="Gender"><br>                     
+                        <mat-radio-button [(ngModel)]="flight.meal" name="fieldName" ngDefaultControl value="Veg">Veg</mat-radio-button>&nbsp;
+                        <mat-radio-button [(ngModel)]="flight.meal" name="fieldName" ngDefaultControl value="NonVeg">NonVeg</mat-radio-button>&nbsp;
+                        <mat-radio-button [(ngModel)]="flight.meal" name="fieldName" ngDefaultControl value="none">None</mat-radio-button>
+                      </mat-radio-group><br><br>
+                      <mat-form-field class="full-width">
+                        <mat-label>Date Of Departure</mat-label>
+                        <input required type="date" [(ngModel)]="flight.dateOfDeparture" placeholder="Enter Date Of Departure"
+                            name="dateOfDeparture" matInput />
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Number of Bussiness Seat</mat-label>
+                        <input required type="number" [(ngModel)]="flight.bussinessSeat" placeholder="Number of Bussiness Seat"
+                            name="bussinessSeat" matInput />
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Number of Economic Seat</mat-label>
+                        <input required type="number" [(ngModel)]="flight.nonBussinessSeat" placeholder="Number of Economic Seat"
+                            name="nonBussinessSeat" matInput />
+                    </mat-form-field> 
+                    <mat-form-field class="full-width">
+                        <mat-label>Price</mat-label>
+                        <input required type="number" [(ngModel)]="flight.price" placeholder="Enter Price"
+                            name="price" matInput />
+                    </mat-form-field>   
+                        <div style="margin-bottom: 2%;" class="container text-center">
+                            <button type="submit" mat-raised-button color="primary">Submit</button>
+                            <button type="reset" style="margin-left: 10px;" mat-raised-button
+                                color="warn">Reset</button>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>

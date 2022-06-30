@@ -1,0 +1,53 @@
+<div class="bootstarp-wrapper">
+    <div class="container mt">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                    <div *ngIf="reservation" class="alert alert-success" role="alert">
+                        Flight booked Successfully
+                      </div>
+                      <span style="color:blue">Ticket Details</span><br><br>
+                      <table *ngIf="reservation" class="table">
+                        <tr class="border">
+                            <td>PNR Number</td>
+                            <td>{{reservation.pnr}}</td>
+                        </tr>
+                        <tr class="border">
+                            <td>Email</td>
+                            <td>{{reservation.email}}</td>
+                        </tr>
+                        <tr class="border">
+                            <td>Airline</td>
+                            <td>{{reservation.flight.airlineName}}</td>
+                        </tr>
+                        <tr class="border">
+                            <td>Departure City</td>
+                            <td>{{reservation.flight.departureCity}}</td>
+                        </tr>
+                        <tr class="border">
+                            <td>Arrival City</td>
+                            <td>{{reservation.flight.arrivalCity}}</td>
+                        </tr>
+                        <tr class="border">
+                            <td>Passanger Name</td>
+                            <td>{{reservation.passenger.name}}</td>
+                        </tr>
+                        <tr class="border">
+                            <td>Passanger Age</td>
+                            <td>{{reservation.passenger.age}}</td>
+                        </tr>
+                        <tr class="border">
+                            <td>Passanger Gender</td>
+                            <td>{{reservation.passenger.gender}}</td>
+                        </tr>
+                        <tr class="border">
+                            <td>Price </td>
+                            <td>{{reservation.flight.price | currency:"INR"}}</td>
+                        </tr>
+                    </table>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

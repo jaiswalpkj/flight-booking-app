@@ -1,0 +1,83 @@
+<div class="bootstarp-wrapper">
+    <div class="container mt">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <span style="color:blue">Flight Details</span><br><br>
+                <table *ngIf="flight" class="table">
+                    <tr class="border">
+                        <td>Airline</td>
+                        <td>{{flight.airlineName}}</td>
+                    </tr>
+                    <tr class="border">
+                        <td>Departure City</td>
+                        <td>{{flight.departureCity}}</td>
+                    </tr>
+                    <tr class="border">
+                        <td>Arrival City</td>
+                        <td>{{flight.arrivalCity}}</td>
+                    </tr>
+                    <tr class="border">
+                        <td>Price</td>
+                        <td>{{flight.price | currency:"INR"}}</td>
+                    </tr>
+                </table>
+
+                <span style="color:blue">Passenger Details</span><br>
+                <div *ngIf="msg" class="alert alert-danger" role="alert">
+                    {{msg}}
+                </div>
+                <!-- creating form -->
+                <form (ngSubmit)="onSubmit()">
+                    <mat-form-field class="full-width">
+                        <mat-label>Email</mat-label>
+                        <input required type="email" [(ngModel)]="reservation.email" placeholder="Enter Email"  name="email" matInput />
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Name</mat-label>
+                        <input required type="text" [(ngModel)]="reservation.passengerName" placeholder="Enter Name"  name="name" matInput />
+                    </mat-form-field>
+                    <mat-label>Gender</mat-label>
+                    <mat-radio-group class="full-width" aria-label="Gender"><br>                     
+                        <mat-radio-button [(ngModel)]="reservation.passengerGender" name="fieldName" ngDefaultControl value="Male">Male</mat-radio-button>
+                        <mat-radio-button [(ngModel)]="reservation.passengerGender" name="fieldName" ngDefaultControl value="Female">Female</mat-radio-button>
+                      </mat-radio-group><br><br>
+                      <mat-label>Meal</mat-label>
+                      <mat-radio-group class="full-width" aria-label="Gender"><br>                     
+                        <mat-radio-button [(ngModel)]="reservation.meal" name="fieldName" ngDefaultControl value="Veg">Veg</mat-radio-button>&nbsp;
+                        <mat-radio-button [(ngModel)]="reservation.meal" name="fieldName" ngDefaultControl value="NonVeg">NonVeg</mat-radio-button>
+                        <mat-radio-button [(ngModel)]="reservation.meal" name="fieldName" ngDefaultControl value="none">None</mat-radio-button>
+                      </mat-radio-group>
+                      <mat-form-field class="full-width">
+                        <mat-label>Age</mat-label>
+                        <input required type="number" [(ngModel)]="reservation.age" placeholder="Enter Age"  name="age" matInput />
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Phone</mat-label>
+                        <input required type="text" [(ngModel)]="reservation.passengerPhone" placeholder="Enter Phone"  name="phone" matInput />
+                    </mat-form-field>
+                    <span style="color:blue">Payment Details</span><br>
+                    <mat-form-field class="full-width">
+                        <mat-label>Name On Card</mat-label>
+                        <input required type="text" [(ngModel)]="reservation.nameOnTheCard" placeholder="Enter Name On Card"  name="nameOnCard" matInput />
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Card Number</mat-label>
+                        <input required type="text" [(ngModel)]="reservation.cardNumber" placeholder="Enter Card Number"  name="cardNumber" matInput />
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>Expiry Date</mat-label>
+                        <input required type="date" [(ngModel)]="reservation.expiryDate" placeholder="Enter Expiry Date"  name="expiryDate" matInput />
+                    </mat-form-field>
+                    <mat-form-field class="full-width">
+                        <mat-label>CVV</mat-label>
+                        <input required type="number" [(ngModel)]="reservation.cvv" placeholder="Enter CVV"  name="name" matInput />
+                    </mat-form-field>
+                    <div style="margin-bottom: 2%;" class="container text-center">
+                        <button type="submit" mat-raised-button color="primary">Submit</button>
+                        <button type="reset" style="margin-left: 10px;" mat-raised-button color="warn">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
